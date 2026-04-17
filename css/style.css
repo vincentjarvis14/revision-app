@@ -22,18 +22,19 @@ body {
    SIDEBAR / DRAWER
    =========================== */
 .sommaire-drawer {
+  /* Mobile: fixed overlay */
   position: fixed;
   top: 0; left: 0; bottom: 0;
-  width: 280px;
+  width: min(280px, 85vw);
   background: #fff;
   display: flex;
   flex-direction: column;
   z-index: 50;
   border-right: 1px solid #e5e7eb;
-  /* Mobile: hidden by default */
   transform: translateX(-100%);
   transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 4px 0 24px rgba(0,0,0,0.12);
+  overflow: hidden;
 }
 .sommaire-drawer.open {
   transform: translateX(0);
@@ -486,40 +487,48 @@ body {
    =========================== */
 @media (min-width: 1024px) {
 
-  /* Sidebar always visible */
+  /* Body becomes a flex row — sidebar is a real flex child */
+  body { flex-direction: row; overflow: hidden; }
+
+  /* Sidebar: in normal flow, not fixed */
   .sommaire-drawer {
-    transform: translateX(0) !important;
-    box-shadow: none;
+    position: relative;
+    top: auto; left: auto; bottom: auto;
+    width: 280px;
+    min-width: 280px;
+    height: 100vh;
+    transform: none !important;
     transition: none;
+    box-shadow: none;
+    flex-shrink: 0;
+    z-index: auto;
+    overflow: hidden;
   }
 
   /* Hide mobile-only elements */
-  .drawer-overlay  { display: none !important; }
+  .drawer-overlay   { display: none !important; }
   .drawer-close-btn { display: none; }
-  #hamburger-btn   { display: none; }
-  .bottom-nav      { display: none; }
-  .swipe-hint      { display: none; }
+  #hamburger-btn    { display: none; }
+  .bottom-nav       { display: none; }
+  .swipe-hint       { display: none; }
+
+  /* No margin-left needed (sidebar is in flow) */
+  .main-area { margin-left: 0; }
 
   /* Show sidebar nav */
   .sidebar-nav { display: flex; }
 
-  /* Main area shifts right */
-  .main-area { margin-left: 280px; }
-
-  /* Header centered title */
+  /* Header title left-aligned */
   .header-title { text-align: left; }
 
-  /* Wider content */
+  /* More breathing room for content */
   .page-inner {
     padding: 28px 32px 40px;
     max-width: 800px;
     margin: 0 auto;
   }
 
-  /* Wider flashcard */
   .flashcard-scene { height: 240px; }
-
-  /* Bigger lesson cards */
   .lesson-card { padding: 22px 24px; }
 }
 
