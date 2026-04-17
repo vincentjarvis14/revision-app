@@ -43,7 +43,7 @@ function saveState() {
 
 // ===== Navigation =====
 function setupNav() {
-  document.querySelectorAll('.nav-btn').forEach(btn => {
+  document.querySelectorAll('.nav-btn, .sidebar-nav-btn').forEach(btn => {
     btn.addEventListener('click', () => switchPage(btn.dataset.page));
   });
 }
@@ -53,7 +53,7 @@ function switchPage(page) {
   saveState();
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById('page-' + page).classList.add('active');
-  document.querySelectorAll('.nav-btn').forEach(b => {
+  document.querySelectorAll('.nav-btn, .sidebar-nav-btn').forEach(b => {
     b.classList.toggle('active', b.dataset.page === page);
   });
   if (page === 'home')       renderHome();

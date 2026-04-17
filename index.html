@@ -3,85 +3,120 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <meta name="description" content="Révision Droit Immobilier" />
-  <title>Droit Immobilier</title>
+  <meta name="description" content="Révision Attaché Territorial — CNFPT" />
+  <title>Révision Attaché Territorial</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/style.css" />
 </head>
-<body class="bg-gray-50 text-gray-900 flex flex-col min-h-screen overflow-hidden">
+<body class="bg-gray-50 text-gray-900">
 
-  <!-- Sommaire Drawer (overlay) -->
+  <!-- Overlay (mobile only) -->
   <div id="drawer-overlay" class="drawer-overlay" onclick="closeDrawer()"></div>
 
+  <!-- Sidebar / Sommaire Drawer -->
   <aside id="sommaire-drawer" class="sommaire-drawer">
-    <div class="flex items-center justify-between px-4 py-4 border-b border-gray-100">
-      <h2 class="font-bold text-base text-indigo-700">Sommaire</h2>
-      <button onclick="closeDrawer()" class="text-gray-400 hover:text-gray-700 p-1">
+
+    <!-- Sidebar header -->
+    <div class="sidebar-header">
+      <div class="sidebar-brand">
+        <span class="sidebar-brand-icon">📚</span>
+        <span class="sidebar-brand-text">Attaché Territorial</span>
+      </div>
+      <button id="drawer-close-btn" onclick="closeDrawer()" class="drawer-close-btn" aria-label="Fermer">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
     </div>
-    <div id="sommaire-list" class="overflow-y-auto flex-1 pb-6"></div>
+
+    <!-- Desktop navigation (hidden on mobile) -->
+    <nav class="sidebar-nav" id="sidebar-nav">
+      <button class="sidebar-nav-btn active" data-page="home">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6" />
+        </svg>
+        Cours
+      </button>
+      <button class="sidebar-nav-btn" data-page="flashcards">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+        </svg>
+        Flashcards
+      </button>
+      <button class="sidebar-nav-btn" data-page="quiz">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        Quiz
+      </button>
+    </nav>
+
+    <div class="sidebar-divider"></div>
+
+    <!-- Chapter list -->
+    <p class="sidebar-section-label">Chapitres</p>
+    <div id="sommaire-list" class="sommaire-list-scroll"></div>
   </aside>
 
-  <!-- Header -->
-  <header class="bg-indigo-600 text-white px-4 py-3 flex items-center justify-between shadow-md z-10 flex-shrink-0">
-    <button onclick="openDrawer()" class="p-1 -ml-1 rounded hover:bg-indigo-500 transition-colors" aria-label="Sommaire">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-    </button>
-    <h1 id="header-title" class="text-sm font-semibold text-center flex-1 mx-3 truncate">Droit Immobilier</h1>
-    <span id="chapter-counter" class="text-xs opacity-75 flex-shrink-0">— / —</span>
-  </header>
+  <!-- Main area -->
+  <div class="main-area">
 
-  <!-- Chapter progress bar -->
-  <div class="w-full bg-indigo-100 h-1 flex-shrink-0">
-    <div id="chapter-progress" class="bg-indigo-400 h-1 transition-all duration-300" style="width:0%"></div>
-  </div>
+    <!-- Header -->
+    <header class="app-header">
+      <button id="hamburger-btn" onclick="openDrawer()" class="hamburger-btn" aria-label="Sommaire">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      <h1 id="header-title" class="header-title">Attaché Territorial</h1>
+      <span id="chapter-counter" class="header-counter">— / —</span>
+    </header>
 
-  <!-- Page container (swipeable) -->
-  <div id="page-container" class="flex-1 overflow-hidden relative">
-
-    <!-- HOME PAGE -->
-    <div id="page-home" class="page active overflow-y-auto px-4 py-5 pb-24">
-      <div id="home-content"></div>
+    <!-- Chapter progress bar -->
+    <div class="progress-bar-track">
+      <div id="chapter-progress" class="progress-bar-fill" style="width:0%"></div>
     </div>
 
-    <!-- FLASHCARDS PAGE -->
-    <div id="page-flashcards" class="page overflow-y-auto px-4 py-5 pb-24">
-      <div id="flashcards-content"></div>
+    <!-- Page container -->
+    <div id="page-container" class="page-container">
+
+      <div id="page-home" class="page active page-scroll">
+        <div id="home-content" class="page-inner"></div>
+      </div>
+
+      <div id="page-flashcards" class="page page-scroll">
+        <div id="flashcards-content" class="page-inner"></div>
+      </div>
+
+      <div id="page-quiz" class="page page-scroll">
+        <div id="quiz-content" class="page-inner"></div>
+      </div>
+
     </div>
 
-    <!-- QUIZ PAGE -->
-    <div id="page-quiz" class="page overflow-y-auto px-4 py-5 pb-24">
-      <div id="quiz-content"></div>
-    </div>
+    <!-- Bottom navigation (mobile only) -->
+    <nav class="bottom-nav">
+      <button class="nav-btn active" data-page="home">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6" />
+        </svg>
+        <span class="text-xs">Cours</span>
+      </button>
+      <button class="nav-btn" data-page="flashcards">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+        </svg>
+        <span class="text-xs">Flashcards</span>
+      </button>
+      <button class="nav-btn" data-page="quiz">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span class="text-xs">Quiz</span>
+      </button>
+    </nav>
 
-  </div>
-
-  <!-- Bottom navigation -->
-  <nav class="bottom-nav bg-white border-t border-gray-200 flex justify-around items-center py-2 shadow-lg flex-shrink-0">
-    <button class="nav-btn active flex flex-col items-center gap-1 px-4 py-1" data-page="home">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6" />
-      </svg>
-      <span class="text-xs">Cours</span>
-    </button>
-    <button class="nav-btn flex flex-col items-center gap-1 px-4 py-1" data-page="flashcards">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-      </svg>
-      <span class="text-xs">Flashcards</span>
-    </button>
-    <button class="nav-btn flex flex-col items-center gap-1 px-4 py-1" data-page="quiz">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-      <span class="text-xs">Quiz</span>
-    </button>
-  </nav>
+  </div><!-- /main-area -->
 
   <script src="js/app.js"></script>
 </body>
