@@ -1,154 +1,282 @@
 {
-  "title": "Droit Immobilier",
+  "title": "Attaché Territorial — Révision Concours",
   "chapters": [
     {
       "id": 1,
-      "title": "Les droits réels immobiliers",
+      "title": "Les institutions françaises",
+      "source": "Environnement territorial — Fiches CNFPT",
       "sections": [
         {
           "id": "1-1",
-          "title": "La propriété",
-          "content": "La propriété est le droit de jouir et disposer des choses de la manière la plus absolue, pourvu qu'on n'en fasse pas un usage prohibé par les lois ou par les règlements (art. 544 C. civ.). Elle confère trois attributs : l'usus (droit d'utiliser), le fructus (droit de percevoir les fruits) et l'abusus (droit de disposer)."
+          "title": "Les grands principes de l'organisation de l'État",
+          "content": "L'État est une entité composée de trois éléments constitutifs : population, territoire et pouvoir souverain. Il est doté de la personnalité morale (continuité institutionnelle) et de la souveraineté (« compétence de ses compétences »). La France est un État unitaire : un seul centre de pouvoir politique, un seul pouvoir législatif et exécutif agissant sur l'ensemble du territoire. Deux modes d'organisation territoriale coexistent : la déconcentration (représentants locaux de l'État en subordination hiérarchique, sans personnalité morale propre) et la décentralisation territoriale (collectivités — communes, départements, régions — dotées de la personnalité morale et de compétences transférées). La décentralisation technique crée des établissements publics spécialisés (EPCI, universités). Depuis 2014, les EPCI à fiscalité propre sont élus au suffrage universel direct."
         },
         {
           "id": "1-2",
-          "title": "L'usufruit",
-          "content": "L'usufruit est le droit de jouir des choses dont un autre a la propriété, comme le propriétaire lui-même, mais à la charge d'en conserver la substance (art. 578 C. civ.). Il est temporaire par nature et s'éteint au décès de l'usufruitier."
+          "title": "L'organisation administrative de l'État",
+          "content": "La déconcentration (décret du 7 mai 2015) consiste à confier aux échelons territoriaux des administrations civiles de l'État le pouvoir, les moyens et la capacité d'initiative pour animer et coordonner les politiques nationales. L'administration centrale assure conception, animation, évaluation et contrôle. Les circonscriptions administratives sont : la commune (1789), le département (1789, préfet depuis 1800), l'arrondissement (XIXe, sous-préfet) et la région (1959-64, préfet de région). Suite au redécoupage de 2015 : 12 régions métropolitaines. Les services régionaux clés : DRFIP, DRAAF, DRAC, DREAL, DREETS (créée le 1er avril 2021), ARS, Rectorats. Départementaux : DDPP, DDT, DDFiP, DSDEN. Le corps préfectoral : nommés par décret présidentiel, pas de droit syndical ni de grève, avancement au choix uniquement. La loi 3DS (21 février 2022) a renforcé le rôle des élus locaux aux ARS."
         },
         {
           "id": "1-3",
-          "title": "Les servitudes",
-          "content": "Une servitude est une charge imposée sur un immeuble (fonds servant) pour l'usage et l'utilité d'un immeuble appartenant à un autre propriétaire (fonds dominant). Les servitudes peuvent être légales, naturelles ou conventionnelles."
+          "title": "Les grandes étapes de la décentralisation",
+          "content": "Acte I (1982-2003) : Loi fondatrice du 2 mars 1982 (loi 82-213) — les régions deviennent des collectivités territoriales, suppression des tutelles administratives remplacées par un contrôle juridictionnel. Transferts de compétences (1983) : régions → apprentissage, lycées ; départements → transports scolaires, collèges ; communes → permis de construire, écoles. Fonction publique territoriale créée en 1984. Acte II (2003-2007) : Réforme constitutionnelle du 28 mars 2003 — « La France a une organisation décentralisée ». Principes : subsidiarité, autonomie financière, droit d'expérimentation (5 ans + 3 ans), participation populaire. Acte III (2007-2019) : Loi MAPTAM (27 janvier 2014) — métropoles, conférences territoriales. Loi du 16 janvier 2015 : 22 régions → 12. Loi NOTRe (7 août 2015) — renforcement des régions, intercommunalités à 15 000 habitants minimum. Ville de Paris collectivité unique depuis 2019. Collectivité européenne d'Alsace créée en 2021."
+        },
+        {
+          "id": "1-4",
+          "title": "L'organisation juridictionnelle",
+          "content": "La France organise sa justice selon deux ordres indépendants. L'ordre judiciaire régit les rapports entre particuliers (droit privé) : tribunaux judiciaires (164), conseils de prud'hommes (210), tribunaux de commerce (134). Infractions pénales : contraventions (tribunal de police), délits (tribunal correctionnel), crimes (cour d'assises). Degrés supérieurs : 36 cours d'appel, Cour de cassation (7 chambres, juge uniquement en droit). L'ordre administratif applique le droit public : 42 tribunaux administratifs, 9 cours administratives d'appel, Conseil d'État (juge suprême administratif). Le Tribunal des conflits résout les conflits d'attribution entre les deux ordres. Le Conseil constitutionnel assure le contrôle normatif (a priori et a posteriori via QPC) et le contentieux électoral."
         }
       ],
       "flashcards": [
-        { "question": "Quels sont les trois attributs de la propriété ?", "answer": "Usus (utiliser), Fructus (percevoir les fruits), Abusus (disposer)" },
-        { "question": "Définir l'usufruit en une phrase.", "answer": "Droit de jouir d'un bien appartenant à autrui, en conservant sa substance, de manière temporaire." },
-        { "question": "Qu'est-ce qu'un fonds servant ?", "answer": "L'immeuble qui supporte la charge de la servitude au profit du fonds dominant." }
+        { "question": "Quels sont les trois éléments constitutifs de l'État ?", "answer": "Population, territoire, pouvoir souverain" },
+        { "question": "Différence entre déconcentration et décentralisation ?", "answer": "Déconcentration : délégation à des agents de l'État (pas de personnalité morale). Décentralisation : transfert à des collectivités autonomes avec personnalité morale." },
+        { "question": "Que marque la loi du 2 mars 1982 ?", "answer": "Acte I de la décentralisation : les régions deviennent des collectivités territoriales, suppression des tutelles administratives." },
+        { "question": "Combien de régions métropolitaines depuis 2015 ?", "answer": "12 régions (redécoupage loi du 16 janvier 2015)" },
+        { "question": "Quelle loi crée les DREETS et quand ?", "answer": "Réorganisation administrative — DREETS créées le 1er avril 2021 (fusion DIRECCTE + DDCS)" },
+        { "question": "Quel tribunal résout les conflits entre ordre judiciaire et administratif ?", "answer": "Le Tribunal des conflits" },
+        { "question": "Quelle est la durée du droit d'expérimentation reconnu aux collectivités (Acte II) ?", "answer": "5 ans, prorogeable 3 ans" },
+        { "question": "Quels sont les apports de la loi NOTRe (2015) ?", "answer": "Renforcement des régions, intercommunalités portées à 15 000 habitants minimum, suppression de la clause générale de compétence pour régions et départements" }
       ],
       "quiz": [
         {
-          "question": "Quel article du Code civil définit la propriété ?",
-          "options": ["Art. 544", "Art. 578", "Art. 637", "Art. 711"],
+          "question": "La loi fondatrice de la décentralisation est datée du :",
+          "options": ["2 mars 1982", "28 mars 2003", "7 août 2015", "27 janvier 2014"],
           "answer": 0
         },
         {
-          "question": "L'usufruit s'éteint automatiquement :",
-          "options": ["Après 30 ans", "Au décès de l'usufruitier", "Au décès du nu-propriétaire", "À la vente du bien"],
+          "question": "Combien de tribunaux administratifs existe-t-il en France ?",
+          "options": ["28", "36", "42", "9"],
+          "answer": 2
+        },
+        {
+          "question": "Le seuil démographique minimum des intercommunalités fixé par la loi NOTRe est de :",
+          "options": ["5 000 habitants", "10 000 habitants", "15 000 habitants", "20 000 habitants"],
+          "answer": 2
+        },
+        {
+          "question": "La réforme constitutionnelle de 2003 inscrit dans la Constitution que :",
+          "options": ["L'État est souverain", "La France a une organisation décentralisée", "Les collectivités sont autonomes", "Le préfet représente l'État"],
           "answer": 1
+        },
+        {
+          "question": "Les DREETS ont été créées le :",
+          "options": ["1er janvier 2015", "7 mai 2015", "1er avril 2021", "21 février 2022"],
+          "answer": 2
         }
       ]
     },
     {
       "id": 2,
-      "title": "La vente immobilière",
+      "title": "Les collectivités territoriales",
+      "source": "Environnement territorial — Fiches CNFPT",
       "sections": [
         {
           "id": "2-1",
-          "title": "La promesse de vente",
-          "content": "La promesse unilatérale de vente est un contrat par lequel le promettant s'engage à vendre un bien à un bénéficiaire qui dispose d'une option d'achat pendant un délai déterminé. Elle diffère du compromis (promesse synallagmatique) qui engage les deux parties."
+          "title": "Les grands principes régissant les collectivités territoriales",
+          "content": "Les collectivités territoriales reposent sur deux principes fondamentaux. Le principe d'autonomie comporte trois volets : autonomie juridique (personnes morales de droit public, patrimoine propre, actes juridiques — art. 72 de la Constitution), autonomie organique (conseils élus au suffrage universel direct ; exécutifs élus par les organes délibérants au suffrage indirect), autonomie fonctionnelle (clause générale de compétence pour les communes, supprimée pour régions et départements par la loi NOTRe 2015). Le contrôle de l'État a été transformé en 1982 : passage de la tutelle administrative (a priori) au contrôle de légalité (a posteriori). Le principe de libre administration est inscrit dans la Constitution depuis 2003 : espace de liberté d'action dans le cadre des compétences infra-législatives, pouvoir réglementaire propre, contrôle par le juge administratif."
         },
         {
           "id": "2-2",
-          "title": "Le compromis de vente",
-          "content": "Le compromis de vente (ou promesse synallagmatique) vaut vente dès lors que les deux parties se sont mises d'accord sur la chose et sur le prix. Il est assorti de conditions suspensives, notamment l'obtention d'un prêt immobilier."
-        },
-        {
-          "id": "2-3",
-          "title": "L'acte authentique",
-          "content": "La vente immobilière doit être constatée par acte authentique notarié pour être opposable aux tiers et permettre la publication au fichier immobilier. Le notaire procède aux vérifications d'urbanisme, hypothèques et diagnostics obligatoires."
-        },
-        {
-          "id": "2-4",
-          "title": "Les diagnostics obligatoires",
-          "content": "Avant toute vente, le vendeur doit fournir un Dossier de Diagnostic Technique (DDT) comprenant notamment le DPE, l'amiante, le plomb, les termites, l'installation électrique et gaz, et l'état des risques et pollutions (ERP)."
+          "title": "Les compétences des collectivités",
+          "content": "Depuis la loi NOTRe (2015), les compétences sont spécialisées par bloc : les régions ont la compétence économique (développement économique, formation professionnelle, lycées) et la planification territoriale (SRADDET). Les départements sont recentrés sur la solidarité sociale et territoriale (RSA, APA, allocations handicap, collèges). Les communes conservent la clause générale de compétence et gèrent urbanisme, voirie, écoles primaires, action sociale de proximité. Les intercommunalités (EPCI à fiscalité propre) exercent des compétences obligatoires (développement économique, aménagement) et optionnelles selon leurs statuts. La loi MAPTAM (2014) crée un statut renforcé pour les métropoles (plus de 400 000 habitants en aire urbaine de plus de 650 000 habitants)."
         }
       ],
       "flashcards": [
-        { "question": "Quelle est la différence entre promesse unilatérale et compromis ?", "answer": "La promesse n'engage que le vendeur ; le compromis engage les deux parties (vaut vente)." },
-        { "question": "Pourquoi l'acte authentique est-il obligatoire ?", "answer": "Pour l'opposabilité aux tiers via la publication au fichier immobilier." },
-        { "question": "Que contient le DDT ?", "answer": "DPE, amiante, plomb, termites, électricité, gaz, ERP (état des risques et pollutions)." }
+        { "question": "Quels sont les trois volets de l'autonomie des collectivités ?", "answer": "Autonomie juridique, autonomie organique, autonomie fonctionnelle" },
+        { "question": "Quelle transformation majeure la loi de 1982 opère-t-elle sur le contrôle de l'État ?", "answer": "Passage de la tutelle administrative (a priori) au contrôle de légalité (a posteriori)" },
+        { "question": "Quelle loi supprime la clause générale de compétence pour les régions et départements ?", "answer": "La loi NOTRe du 7 août 2015" },
+        { "question": "Quelle est la compétence distinctive des régions depuis la loi NOTRe ?", "answer": "Développement économique, formation professionnelle, lycées, planification territoriale (SRADDET)" },
+        { "question": "Conditions pour être qualifié de métropole (loi MAPTAM) ?", "answer": "Plus de 400 000 habitants dans une aire urbaine de plus de 650 000 habitants" }
       ],
       "quiz": [
         {
-          "question": "Le compromis de vente engage :",
-          "options": ["Uniquement le vendeur", "Uniquement l'acheteur", "Les deux parties", "Aucune des parties"],
+          "question": "Le principe de libre administration des collectivités est inscrit dans la Constitution depuis :",
+          "options": ["1982", "1986", "2003", "2015"],
           "answer": 2
         },
         {
-          "question": "Le DPE signifie :",
-          "options": ["Dossier de Plan d'Ensemble", "Diagnostic de Performance Énergétique", "Document de Propriété Enregistré", "Déclaration Préalable d'Exploitation"],
+          "question": "Quelle collectivité conserve la clause générale de compétence après 2015 ?",
+          "options": ["La région", "Le département", "La commune", "La métropole"],
+          "answer": 2
+        },
+        {
+          "question": "Le contrôle de légalité exercé par l'État sur les collectivités est :",
+          "options": ["A priori et obligatoire", "A posteriori et juridictionnel", "Exercé par le Conseil d'État", "Exercé par la Cour des comptes"],
+          "answer": 1
+        },
+        {
+          "question": "Quelle loi crée le statut renforcé des métropoles ?",
+          "options": ["Loi NOTRe (2015)", "Loi MAPTAM (2014)", "Loi du 2 mars 1982", "Réforme constitutionnelle 2003"],
           "answer": 1
         }
       ]
     },
     {
       "id": 3,
-      "title": "Le bail d'habitation",
+      "title": "Documents de planification urbaine — RNU, PLU, SCoT",
+      "source": "Politiques d'urbanisme — Fiches CNFPT",
       "sections": [
         {
           "id": "3-1",
-          "title": "La loi du 6 juillet 1989",
-          "content": "La loi du 6 juillet 1989 régit les locations à usage de résidence principale. Elle encadre la durée du bail (3 ans pour un bailleur privé, 6 ans pour un bailleur personne morale), les conditions de congé, et les droits et obligations des parties."
+          "title": "Le Règlement National d'Urbanisme (RNU)",
+          "content": "Le RNU fixe des règles générales sur l'utilisation du sol. Il s'applique aux communes sans PLU ni document d'urbanisme équivalent. Quatre règles d'ordre public s'imposent partout : salubrité et sécurité publique, protection archéologique, environnement, et respect du caractère des lieux avoisinants. En l'absence de PLU, le principe fondamental est la constructibilité limitée : interdiction de construire hors des parties actuellement urbanisées (PAU), avec quatre exceptions : extension d'exploitations agricoles existantes, constructions nécessaires aux activités agricoles ou pastorales, installations incompatibles avec les zones habitées, projets justifiés par délibération municipale. Ce principe combat l'étalement urbain. Règles techniques minimales : alimentation en eau potable, assainissement, desserte par voies, distance minimale de 3 mètres entre bâtiments."
         },
         {
           "id": "3-2",
-          "title": "Le dépôt de garantie",
-          "content": "Pour un logement non meublé, le dépôt de garantie est limité à 1 mois de loyer hors charges. Pour un meublé, il est de 2 mois. Il doit être restitué dans un délai d'un mois si aucun dommage n'est constaté, ou deux mois en cas de retenues justifiées."
+          "title": "Le Plan Local d'Urbanisme (PLU)",
+          "content": "Le PLU a remplacé le POS depuis 2000. Son élaboration n'est pas obligatoire mais confère des compétences essentielles (droit de préemption urbain). Il est élaboré par la commune ou l'EPCI (tendance intercommunale depuis la loi ALUR). Contenu obligatoire : 1) Rapport de présentation (diagnostic, analyse des 10 ans précédents, capacités de densification) ; 2) PADD — Projet d'Aménagement et de Développement Durables (orientations générales, objectifs chiffrés de modération de la consommation d'espace) ; 3) OAP — Orientations d'Aménagement et de Programmation (aménagement, habitat, transports) ; 4) Règlement avec zonage (U, AU, A, N) et règles de zone ; 5) Annexes. Hiérarchie : le PLU doit être compatible avec le SCoT. Entrée en vigueur : immédiate si SCoT approuvé, délai d'un mois sinon. Suivi obligatoire : évaluation tous les 9 ans, bilan tous les 3 ans si PLU tient lieu de PLH."
         },
         {
           "id": "3-3",
-          "title": "Les charges récupérables",
-          "content": "Les charges récupérables sont les dépenses engagées par le bailleur mais refacturables au locataire selon une liste limitative fixée par décret. Elles couvrent les services liés à l'usage du logement et des parties communes, et les petites réparations."
+          "title": "Les quatre zones du PLU",
+          "content": "Zone U (Urbaine) : zones déjà urbanisées ou suffisamment équipées pour permettre le développement de l'urbanisation. Zone AU (À urbaniser) : zones d'urbanisation future. Si les équipements sont suffisants, les OAP définissent les conditions ; sinon, une modification ou révision du PLU est nécessaire. Zone A (Agricole) : zones protégées pour leur potentiel agro-économique. Seules autorisées : constructions et installations nécessaires aux services publics et à l'exploitation agricole. Zone N (Naturelle et forestière) : zones protégées pour la qualité des sites, milieux naturels ou exploitation forestière. Quelques constructions agricoles ou forestières et certains équipements publics peuvent être autorisés. Des zonages spéciaux sont possibles : espaces boisés classés (EBC), emplacements réservés, zones de préemption."
+        },
+        {
+          "id": "3-4",
+          "title": "Le Schéma de Cohérence Territoriale (SCoT)",
+          "content": "Le SCoT est un document d'urbanisme qui détermine à une échelle large un projet de territoire, coordonnant les politiques d'urbanisme, habitat, déplacements et équipements à l'échelle intercommunale. Il est élaboré par les EPCI ou syndicats mixtes. Contenu : 1) Rapport de présentation (diagnostic économique et démographique) ; 2) PADD (objectifs en logement, transports, équipements, protection environnementale) ; 3) DOO — Document d'Orientation et Objectifs (orientations générales de l'organisation spatiale, équilibres entre espaces urbains et ruraux). Effets majeurs : permet l'ouverture à l'urbanisation des zones N et AU des PLU ; les documents locaux (PLU, programmes habitat, plans déplacements) doivent être compatibles avec le SCoT. Procédure : débat public → arrêt du projet → évaluation environnementale → enquête publique → approbation."
         }
       ],
       "flashcards": [
-        { "question": "Durée minimale d'un bail vide pour un bailleur personne physique ?", "answer": "3 ans" },
-        { "question": "Quel est le plafond du dépôt de garantie pour un logement vide ?", "answer": "1 mois de loyer hors charges" },
-        { "question": "Dans quel délai restituer le dépôt de garantie sans dommages ?", "answer": "1 mois après remise des clés" }
+        { "question": "À qui s'applique le RNU ?", "answer": "Aux communes sans PLU ni document d'urbanisme équivalent" },
+        { "question": "Quel est le principe fondamental du RNU ?", "answer": "Constructibilité limitée : interdiction de construire hors des parties actuellement urbanisées (PAU)" },
+        { "question": "Quelles sont les 5 composantes obligatoires du PLU ?", "answer": "Rapport de présentation, PADD, OAP, Règlement (zonage + règles), Annexes" },
+        { "question": "Que signifie OAP dans un PLU ?", "answer": "Orientations d'Aménagement et de Programmation (aménagement, habitat, transports)" },
+        { "question": "Quelles sont les 4 zones fondamentales du PLU ?", "answer": "U (Urbaine), AU (À urbaniser), A (Agricole), N (Naturelle et forestière)" },
+        { "question": "Quelle est la relation hiérarchique entre PLU et SCoT ?", "answer": "Le PLU doit être compatible avec le SCoT (document de niveau supérieur)" },
+        { "question": "Que signifie DOO dans le SCoT ?", "answer": "Document d'Orientation et Objectifs — orientations générales de l'organisation spatiale" },
+        { "question": "Qui élabore le SCoT ?", "answer": "Les EPCI (communautés urbaines, agglomérations, métropoles) ou syndicats mixtes" },
+        { "question": "Quand le PLU entre-t-il en vigueur sans SCoT approuvé ?", "answer": "Après un délai d'un mois (le préfet peut bloquer s'il identifie des incompatibilités)" }
       ],
       "quiz": [
         {
-          "question": "La durée minimale d'un bail pour une personne morale (bailleur) est de :",
-          "options": ["1 an", "3 ans", "6 ans", "9 ans"],
+          "question": "Le PLU a remplacé quel document depuis 2000 ?",
+          "options": ["Le SCoT", "Le RNU", "Le POS (Plan d'Occupation des Sols)", "La carte communale"],
           "answer": 2
         },
         {
-          "question": "Le dépôt de garantie d'un logement meublé est limité à :",
-          "options": ["1 mois HC", "2 mois HC", "3 mois HC", "Pas de limite"],
+          "question": "En zone A (agricole) du PLU, sont autorisées :",
+          "options": ["Toutes constructions résidentielles", "Constructions nécessaires à l'exploitation agricole et services publics", "Constructions commerciales", "Zones d'urbanisation future"],
           "answer": 1
+        },
+        {
+          "question": "Le DOO est un document du :",
+          "options": ["PLU", "RNU", "SCoT", "Permis de construire"],
+          "answer": 2
+        },
+        {
+          "question": "Combien de fois le PLU doit-il faire l'objet d'une évaluation globale ?",
+          "options": ["Tous les 3 ans", "Tous les 6 ans", "Tous les 9 ans", "Tous les 12 ans"],
+          "answer": 2
+        },
+        {
+          "question": "Le principe de constructibilité limitée du RNU interdit de construire :",
+          "options": ["Dans les zones agricoles", "En zone naturelle", "Hors des parties actuellement urbanisées (PAU)", "Sans permis de construire"],
+          "answer": 2
         }
       ]
     },
     {
       "id": 4,
-      "title": "La copropriété",
+      "title": "Les autorisations d'urbanisme",
+      "source": "Politiques d'urbanisme — Fiches CNFPT",
       "sections": [
         {
           "id": "4-1",
-          "title": "La loi du 10 juillet 1965",
-          "content": "La copropriété est régie par la loi du 10 juillet 1965. Elle s'applique aux immeubles bâtis ou groupes d'immeubles dont la propriété est répartie entre plusieurs personnes par lots comprenant chacun une partie privative et une quote-part des parties communes."
+          "title": "Les règles communes aux autorisations d'urbanisme",
+          "content": "Les autorisations d'urbanisme comprennent quatre catégories : permis de construire, permis d'aménager, permis de démolir, déclaration préalable. Certains projets sont dispensés de formalités : constructions très modestes (moins de 5 m²), constructions temporaires (moins de 3 mois), projets de défense nationale, travaux d'entretien ordinaire. Procédure de demande : le demandeur peut être le propriétaire, son mandataire ou une personne autorisée. Nombre d'exemplaires : 2 pour déclarations préalables, 4 pour permis. Dépôt en mairie avec numéro d'enregistrement. Autorité compétente : le maire au nom de la commune en principe ; l'État intervient pour certains ouvrages d'infrastructure. Délais d'instruction : 1 mois (déclaration préalable), 2 mois (permis de démolir), 3 mois (autres permis). Contrôle de conformité : déclaration d'achèvement des travaux, délai de 3 ans pour contester."
         },
         {
           "id": "4-2",
-          "title": "Le règlement de copropriété",
-          "content": "Le règlement de copropriété est un document contractuel qui définit la destination de l'immeuble, la consistance des parties privatives et communes, les conditions de jouissance, et la répartition des charges. Il s'impose à tous les copropriétaires."
+          "title": "Le permis de construire",
+          "content": "Le permis de construire est un acte administratif individuel par lequel une autorité administrative autorise des travaux ou une construction. Champ d'application : constructions nouvelles de tous types ; travaux sur constructions existantes créant plus de 20 m² (40 m² en zones urbaines avec PLU) ; modifications de structures porteuses ou façades avec changement de destination ; travaux en zones protégées (secteurs sauvegardés, monuments historiques). Dossier : identité du demandeur et de l'architecte, localisation, superficie, destination, plans (façades, coupes), photographies. 4 exemplaires déposés en mairie. Délais : 2 mois pour une maison individuelle (extensible à 3 mois), 3 mois pour les autres constructions. Validité : 2 ans. Permis tacite possible après expiration du délai sans réponse. Affichage en mairie : 8 jours, durée 2 mois. Déclaration d'ouverture de chantier obligatoire. Attestation de conformité exigée en fin de travaux."
         },
         {
           "id": "4-3",
-          "title": "Le syndicat des copropriétaires",
-          "content": "Le syndicat des copropriétaires regroupe tous les copropriétaires. Il est représenté par le syndic (professionnel ou bénévole) et administré par le conseil syndical. L'assemblée générale est l'organe souverain de décision."
+          "title": "La loi Littoral",
+          "content": "La loi Littoral s'applique aux communes riveraines des mers, océans, étangs salés et plans d'eau de plus de 1 000 hectares (environ 1 200 communes). Elle vise trois objectifs : protéger les équilibres biologiques, préserver les sites et paysages, maintenir les activités économiques (pêche, tourisme, ports). Interdictions majeures : dans la bande littorale des 100 mètres, les constructions sont interdites en dehors des espaces urbanisés (sauf services publics ou activités nécessitant la proximité immédiate de l'eau) ; routes nouvelles interdites sur plages/dunes/corniches ; routes de transit à plus de 2 000 mètres du rivage. L'urbanisation doit se faire en continuité avec les agglomérations existantes. Servitude de passage piétons de 3 mètres sur le littoral. Camping/caravanes interdits dans les 100 mètres. Les directives territoriales d'aménagement peuvent préciser les modalités d'application. L'extension d'urbanisation doit être justifiée dans le PLU."
         }
       ],
       "flashcards": [
-        { "question": "Quelle loi régit la copropriété en France ?", "answer": "La loi du 10 juillet 1965" },
-        { "question": "Qu'est-ce qu'un lot de copropriété ?", "answer": "Une partie privative + une quote-part des parties communes (exprimée en tantièmes)" },
-        { "question": "Quel est le rôle du syndic ?", "answer": "Représenter le syndicat des copropriétaires et gérer l'immeuble au quotidien" }
+        { "question": "Quels sont les 4 types d'autorisations d'urbanisme ?", "answer": "Permis de construire, permis d'aménager, permis de démolir, déclaration préalable" },
+        { "question": "Délai d'instruction d'un permis de construire pour une maison individuelle ?", "answer": "2 mois (extensible à 3 mois)" },
+        { "question": "Quelle est la durée de validité d'un permis de construire ?", "answer": "2 ans à compter de sa délivrance (prorogeable 1 an)" },
+        { "question": "Dans la bande des 100 mètres (loi Littoral), que s'applique-t-il ?", "answer": "Interdiction de construire hors des espaces urbanisés (sauf services publics ou activités nécessitant la proximité de l'eau)" },
+        { "question": "Combien de communes sont concernées par la loi Littoral ?", "answer": "Environ 1 200 communes" },
+        { "question": "Quel est le délai pour contester la conformité des travaux ?", "answer": "3 ans après la déclaration d'achèvement des travaux" },
+        { "question": "Quelle servitude la loi Littoral impose-t-elle sur le bord de mer ?", "answer": "Servitude de passage piétons de 3 mètres" }
       ],
       "quiz": [
         {
-          "question": "Le règlement de copropriété s'impose :",
-          "options": ["Uniquement aux copropriétaires actuels", "À tous les copropriétaires présents et futurs", "Uniquement au syndic", "Aux locataires uniquement"],
+          "question": "Le délai d'instruction d'une déclaration préalable est de :",
+          "options": ["15 jours", "1 mois", "2 mois", "3 mois"],
+          "answer": 1
+        },
+        {
+          "question": "Les constructions de moins de quelle superficie sont dispensées de formalités ?",
+          "options": ["2 m²", "5 m²", "10 m²", "20 m²"],
+          "answer": 1
+        },
+        {
+          "question": "La loi Littoral s'applique aux plans d'eau de plus de :",
+          "options": ["500 hectares", "1 000 hectares", "2 000 hectares", "5 000 hectares"],
+          "answer": 1
+        },
+        {
+          "question": "En zone littorale, les routes de transit doivent être situées à plus de :",
+          "options": ["500 m du rivage", "1 000 m du rivage", "2 000 m du rivage", "3 000 m du rivage"],
+          "answer": 2
+        },
+        {
+          "question": "Le permis de construire est affiché en mairie pendant :",
+          "options": ["8 jours", "1 mois", "2 mois", "3 mois"],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Les opérations d'aménagement",
+      "source": "Politiques d'urbanisme — Fiches CNFPT",
+      "sections": [
+        {
+          "id": "5-1",
+          "title": "Les Zones d'Aménagement Concerté (ZAC)",
+          "content": "La ZAC est une zone où une collectivité publique intervient pour réaliser l'aménagement et l'équipement de terrains destinés à être cédés à des utilisateurs publics ou privés. Conditions de création : impact urbain significatif, respect de la planification locale (PLU, SCoT). Procédure : initiative de la collectivité ou d'un établissement public → études préalables (programme, faisabilité) → concertation publique obligatoire → dossier de création (rapport, plans, étude d'impact si nécessaire) → délibération ou acte préfectoral. Réalisation : dossier de réalisation (équipements publics, programme de constructions, financement) ; trois modes possibles : régie directe, mandat, ou concession d'aménagement. Acquisitions foncières : amiables, préemption urbaine, ou expropriation. Cession des terrains soumise à cahier des charges approuvé."
+        },
+        {
+          "id": "5-2",
+          "title": "Les lotissements",
+          "content": "Un lotissement consiste à diviser une propriété foncière en plusieurs lots destinés à être bâtis. Ne sont pas des lotissements : les divisions pour immeubles collectifs, les divisions dans un remembrement urbain, les divisions internes aux ZAC, les détachements de terrains. Procédures : permis d'aménager requis si création/aménagement de voies, espaces ou équipements communs, ou si localisation en secteur sauvegardé ou site classé. Déclaration préalable si aucune création d'équipements communs hors secteurs protégés. Réalisation : délai de 2 ans (prorogeable 1 an), travaux à réaliser avant commercialisation (sauf dérogations). Commercialisation : droit de rétractation de 7 jours après promesse unilatérale, aucune promesse avant délivrance du permis. Gestion des équipements : association syndicale des acquéreurs obligatoire ou transfert au domaine public municipal avec convention. Note : ordonnance du 23 septembre 2015 a modifié le Code de l'urbanisme sur ce point."
+        }
+      ],
+      "flashcards": [
+        { "question": "Qu'est-ce qu'une ZAC ?", "answer": "Zone d'Aménagement Concerté — zone où une collectivité publique aménage et équipe des terrains pour les céder à des utilisateurs publics ou privés" },
+        { "question": "Quels sont les trois modes de réalisation d'une ZAC ?", "answer": "Régie directe, mandat, ou concession d'aménagement" },
+        { "question": "Qu'est-ce qu'un lotissement ?", "answer": "Division d'une propriété foncière en plusieurs lots destinés à être bâtis" },
+        { "question": "Quand un permis d'aménager est-il requis pour un lotissement ?", "answer": "Si création/aménagement de voies, espaces ou équipements communs, ou si localisation en secteur sauvegardé ou site classé" },
+        { "question": "Quel est le délai de rétractation après promesse unilatérale dans un lotissement ?", "answer": "7 jours" },
+        { "question": "Quels moyens permettent les acquisitions foncières dans une ZAC ?", "answer": "Acquisitions amiables, préemption urbaine, ou expropriation" }
+      ],
+      "quiz": [
+        {
+          "question": "Dans une ZAC, la concertation publique est :",
+          "options": ["Facultative selon la taille du projet", "Obligatoire", "Réservée aux projets de plus de 10 hectares", "À la discrétion du maire"],
+          "answer": 1
+        },
+        {
+          "question": "Le délai de réalisation des travaux dans un lotissement est de :",
+          "options": ["1 an (prorogeable 1 an)", "2 ans (prorogeable 1 an)", "3 ans (non prorogeable)", "5 ans"],
+          "answer": 1
+        },
+        {
+          "question": "Quelle structure doit être constituée pour gérer les équipements communs d'un lotissement ?",
+          "options": ["Un syndicat de copropriété", "Une association syndicale des acquéreurs", "Un EPCI", "Une régie municipale"],
+          "answer": 1
+        },
+        {
+          "question": "Une division de propriété dans une ZAC est-elle constitutive d'un lotissement ?",
+          "options": ["Oui, toujours", "Non, jamais", "Seulement si plus de 5 lots", "Seulement si permis d'aménager requis"],
           "answer": 1
         }
       ]
