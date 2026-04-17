@@ -6,6 +6,11 @@ let state = {
   chapterIndex: 0,
   currentPage: 'home',
   flashcardIndex: 0,
+  // Quiz
+  quizMode: 'setup',       // 'setup' | 'running' | 'results'
+  quizSelectedChapters: [], // [] = tous
+  quizSearchTerm: '',
+  quizQueue: [],            // questions actives pour la session
   quizIndex: 0,
   quizAnswered: false,
   quizScore: 0,
@@ -15,7 +20,11 @@ let state = {
 async function init() {
   const saved = localStorage.getItem('revisionState');
   if (saved) {
-    try { Object.assign(state, JSON.parse(saved)); } catch(e) {}
+    try {
+      const parsed = JSON.parse(saved);
+      state.chapterIndex = parsed.chapterIndex ?? 0;
+      state.currentPage  = parsed.currentPage  ?? 'home';
+    } catch(e) {}
   }
   const res = await fetch('data/courses.json');
   courses = await res.json();
@@ -28,16 +37,14 @@ async function init() {
 function saveState() {
   localStorage.setItem('revisionState', JSON.stringify({
     chapterIndex: state.chapterIndex,
-    currentPage: state.currentPage,
+    currentPage:  state.currentPage,
   }));
 }
 
 // ===== Navigation =====
 function setupNav() {
   document.querySelectorAll('.nav-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      switchPage(btn.dataset.page);
-    });
+    btn.addEventListener('click', () => switchPage(btn.dataset.page));
   });
 }
 
@@ -49,9 +56,9 @@ function switchPage(page) {
   document.querySelectorAll('.nav-btn').forEach(b => {
     b.classList.toggle('active', b.dataset.page === page);
   });
-  if (page === 'home') renderHome();
+  if (page === 'home')       renderHome();
   if (page === 'flashcards') renderFlashcards();
-  if (page === 'quiz') renderQuiz();
+  if (page === 'quiz')       renderQuizSetup();
 }
 
 // ===== Chapter navigation =====
@@ -59,9 +66,6 @@ function goToChapter(index, sectionId = null) {
   if (!courses || index < 0 || index >= courses.chapters.length) return;
   state.chapterIndex = index;
   state.flashcardIndex = 0;
-  state.quizIndex = 0;
-  state.quizAnswered = false;
-  state.quizScore = 0;
   saveState();
   renderAll();
   closeDrawer();
@@ -76,7 +80,7 @@ function goToChapter(index, sectionId = null) {
 function renderAll() {
   renderHome();
   renderFlashcards();
-  renderQuiz();
+  renderQuizSetup();
   updateHeader();
   switchPage(state.currentPage);
 }
@@ -114,12 +118,8 @@ function renderHome() {
     </p>
     ${sectionsHTML}
     <div class="chapter-nav mt-4">
-      <button onclick="goToChapter(${state.chapterIndex - 1})" ${prevDisabled}>
-        ← Précédent
-      </button>
-      <button onclick="goToChapter(${state.chapterIndex + 1})" ${nextDisabled}>
-        Suivant →
-      </button>
+      <button onclick="goToChapter(${state.chapterIndex - 1})" ${prevDisabled}>← Précédent</button>
+      <button onclick="goToChapter(${state.chapterIndex + 1})" ${nextDisabled}>Suivant →</button>
     </div>
     <p class="swipe-hint">← glisser pour changer de chapitre →</p>
   `;
@@ -143,7 +143,6 @@ function renderFlashcards() {
       Flashcards — Ch. ${state.chapterIndex + 1}
     </p>
     <p class="text-center text-xs text-gray-400 mb-3">Appuie sur la carte pour voir la réponse</p>
-
     <div class="flashcard-scene" id="flashcard" onclick="flipCard()">
       <div class="flashcard-inner">
         <div class="flashcard-face flashcard-front">
@@ -154,20 +153,14 @@ function renderFlashcards() {
         </div>
       </div>
     </div>
-
     <p class="text-center text-xs text-gray-400 mb-4">${state.flashcardIndex + 1} / ${cards.length}</p>
-
     <div class="chapter-nav">
       <button onclick="prevCard()" ${state.flashcardIndex === 0 ? 'disabled' : ''}>← Préc.</button>
       <button onclick="nextCard()" ${state.flashcardIndex === cards.length - 1 ? 'disabled' : ''}>Suiv. →</button>
     </div>
     <div class="chapter-nav mt-3">
-      <button onclick="goToChapter(${state.chapterIndex - 1})" ${state.chapterIndex === 0 ? 'disabled' : ''} style="font-size:0.7rem">
-        ← Chapitre préc.
-      </button>
-      <button onclick="goToChapter(${state.chapterIndex + 1})" ${state.chapterIndex === courses.chapters.length - 1 ? 'disabled' : ''} style="font-size:0.7rem">
-        Chapitre suiv. →
-      </button>
+      <button onclick="goToChapter(${state.chapterIndex - 1})" ${state.chapterIndex === 0 ? 'disabled' : ''} style="font-size:0.7rem">← Chapitre préc.</button>
+      <button onclick="goToChapter(${state.chapterIndex + 1})" ${state.chapterIndex === courses.chapters.length - 1 ? 'disabled' : ''} style="font-size:0.7rem">Chapitre suiv. →</button>
     </div>
   `;
 }
@@ -175,50 +168,182 @@ function renderFlashcards() {
 function flipCard() {
   document.getElementById('flashcard').classList.toggle('flipped');
 }
-
 function nextCard() {
   const cards = courses.chapters[state.chapterIndex].flashcards;
-  if (state.flashcardIndex < cards.length - 1) {
-    state.flashcardIndex++;
-    renderFlashcards();
-  }
+  if (state.flashcardIndex < cards.length - 1) { state.flashcardIndex++; renderFlashcards(); }
 }
-
 function prevCard() {
-  if (state.flashcardIndex > 0) {
-    state.flashcardIndex--;
-    renderFlashcards();
-  }
+  if (state.flashcardIndex > 0) { state.flashcardIndex--; renderFlashcards(); }
 }
 
-// ===== Quiz =====
-function renderQuiz() {
+// ===== QUIZ — Setup screen =====
+function renderQuizSetup() {
   if (!courses) return;
-  const ch = courses.chapters[state.chapterIndex];
-  const questions = ch.quiz;
   const container = document.getElementById('quiz-content');
 
-  if (!questions || questions.length === 0) {
-    container.innerHTML = '<p class="text-center text-gray-400 mt-8">Aucune question pour ce chapitre.</p>';
-    return;
+  const chipsHTML = courses.chapters.map((ch, i) => {
+    const active = state.quizSelectedChapters.includes(i);
+    return `<button
+      class="quiz-chip ${active ? 'active' : ''}"
+      onclick="toggleChapterChip(${i})"
+      data-chip="${i}">
+      <span class="chip-num">${i + 1}</span>${ch.title}
+    </button>`;
+  }).join('');
+
+  container.innerHTML = `
+    <p class="text-xs font-bold text-indigo-500 uppercase tracking-widest mb-4">Quiz — Sélection</p>
+
+    <!-- Recherche par notion -->
+    <div class="quiz-search-wrap mb-4">
+      <svg class="quiz-search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
+      </svg>
+      <input
+        id="quiz-search"
+        type="text"
+        placeholder="Rechercher une notion… (ex: usufruit, bail)"
+        class="quiz-search-input"
+        value="${state.quizSearchTerm}"
+        oninput="onQuizSearch(this.value)"
+      />
+      ${state.quizSearchTerm ? `<button class="quiz-search-clear" onclick="clearQuizSearch()">✕</button>` : ''}
+    </div>
+
+    <!-- Chips chapitres -->
+    <div class="mb-2">
+      <p class="text-xs text-gray-400 mb-2">Ou sélectionner un chapitre :</p>
+      <div class="quiz-chips-wrap">${chipsHTML}</div>
+      ${state.quizSelectedChapters.length > 0
+        ? `<button class="text-xs text-indigo-400 mt-2 underline" onclick="clearChapterSelection()">Tout désélectionner</button>`
+        : ''}
+    </div>
+
+    <!-- Preview count -->
+    <div id="quiz-preview" class="quiz-preview"></div>
+
+    <!-- Start button -->
+    <button id="quiz-start-btn" class="quiz-start-btn" onclick="startQuiz()">
+      Démarrer le quiz
+    </button>
+  `;
+
+  updateQuizPreview();
+}
+
+function toggleChapterChip(index) {
+  // Clear search when selecting a chapter chip
+  state.quizSearchTerm = '';
+  const i = state.quizSelectedChapters.indexOf(index);
+  if (i === -1) state.quizSelectedChapters.push(index);
+  else state.quizSelectedChapters.splice(i, 1);
+  renderQuizSetup();
+}
+
+function clearChapterSelection() {
+  state.quizSelectedChapters = [];
+  renderQuizSetup();
+}
+
+function onQuizSearch(value) {
+  state.quizSearchTerm = value.trim().toLowerCase();
+  // Clear chapter selection when typing
+  state.quizSelectedChapters = [];
+  updateQuizPreview();
+  // Update chips display
+  document.querySelectorAll('.quiz-chip').forEach(c => c.classList.remove('active'));
+  // Update clear button visibility
+  const wrap = document.querySelector('.quiz-search-wrap');
+  const existing = wrap.querySelector('.quiz-search-clear');
+  if (state.quizSearchTerm && !existing) {
+    const btn = document.createElement('button');
+    btn.className = 'quiz-search-clear';
+    btn.textContent = '✕';
+    btn.onclick = clearQuizSearch;
+    wrap.appendChild(btn);
+  } else if (!state.quizSearchTerm && existing) {
+    existing.remove();
   }
+}
+
+function clearQuizSearch() {
+  state.quizSearchTerm = '';
+  document.getElementById('quiz-search').value = '';
+  updateQuizPreview();
+  const btn = document.querySelector('.quiz-search-clear');
+  if (btn) btn.remove();
+}
+
+function buildQuizQueue() {
+  if (!courses) return [];
+  const term = state.quizSearchTerm;
+  const selected = state.quizSelectedChapters;
+
+  let questions = [];
+
+  courses.chapters.forEach((ch, ci) => {
+    if (!ch.quiz || ch.quiz.length === 0) return;
+
+    if (term) {
+      // Search mode: match chapter title, section titles, or question text
+      const chapterMatch = ch.title.toLowerCase().includes(term);
+      const sectionMatch = ch.sections.some(s => s.title.toLowerCase().includes(term));
+      const questionMatch = ch.quiz.filter(q =>
+        q.question.toLowerCase().includes(term) ||
+        q.options.some(o => o.toLowerCase().includes(term))
+      );
+
+      if (chapterMatch || sectionMatch) {
+        // Include all questions from matching chapter/section
+        ch.quiz.forEach(q => questions.push({ ...q, chapterTitle: ch.title }));
+      } else if (questionMatch.length > 0) {
+        questionMatch.forEach(q => questions.push({ ...q, chapterTitle: ch.title }));
+      }
+    } else if (selected.length > 0) {
+      if (selected.includes(ci)) {
+        ch.quiz.forEach(q => questions.push({ ...q, chapterTitle: ch.title }));
+      }
+    } else {
+      // No filter: all questions
+      ch.quiz.forEach(q => questions.push({ ...q, chapterTitle: ch.title }));
+    }
+  });
+
+  // Shuffle
+  return questions.sort(() => Math.random() - 0.5);
+}
+
+function updateQuizPreview() {
+  const preview = document.getElementById('quiz-preview');
+  if (!preview) return;
+  const queue = buildQuizQueue();
+  if (queue.length === 0) {
+    preview.innerHTML = `<p class="text-xs text-orange-400">Aucune question trouvée pour cette sélection.</p>`;
+    document.getElementById('quiz-start-btn').disabled = true;
+  } else {
+    preview.innerHTML = `<p class="text-xs text-indigo-500 font-medium">${queue.length} question${queue.length > 1 ? 's' : ''} sélectionnée${queue.length > 1 ? 's' : ''}</p>`;
+    document.getElementById('quiz-start-btn').disabled = false;
+  }
+}
+
+function startQuiz() {
+  const queue = buildQuizQueue();
+  if (queue.length === 0) return;
+  state.quizQueue    = queue;
+  state.quizIndex    = 0;
+  state.quizScore    = 0;
+  state.quizAnswered = false;
+  state.quizMode     = 'running';
+  renderQuizQuestion();
+}
+
+// ===== QUIZ — Running =====
+function renderQuizQuestion() {
+  const container = document.getElementById('quiz-content');
+  const questions  = state.quizQueue;
 
   if (state.quizIndex >= questions.length) {
-    const pct = Math.round((state.quizScore / questions.length) * 100);
-    container.innerHTML = `
-      <div class="lesson-card text-center mt-6">
-        <p class="text-4xl font-bold text-indigo-600 mb-2">${pct}%</p>
-        <p class="text-sm text-gray-500 mb-1">${state.quizScore} / ${questions.length} correctes</p>
-        <p class="text-xs text-gray-400 mb-4">Chapitre ${state.chapterIndex + 1}</p>
-        <button onclick="restartQuiz()" class="w-full py-3 bg-indigo-600 text-white rounded-xl font-semibold text-sm">
-          Recommencer
-        </button>
-      </div>
-      <div class="chapter-nav mt-4">
-        <button onclick="goToChapter(${state.chapterIndex - 1})" ${state.chapterIndex === 0 ? 'disabled' : ''}>← Chapitre préc.</button>
-        <button onclick="goToChapter(${state.chapterIndex + 1})" ${state.chapterIndex === courses.chapters.length - 1 ? 'disabled' : ''}>Chapitre suiv. →</button>
-      </div>
-    `;
+    renderQuizResults();
     return;
   }
 
@@ -228,17 +353,22 @@ function renderQuiz() {
   `).join('');
 
   container.innerHTML = `
-    <p class="text-xs font-bold text-indigo-500 uppercase tracking-widest mb-3">
-      Quiz — Ch. ${state.chapterIndex + 1}
-    </p>
+    <div class="flex items-center justify-between mb-4">
+      <p class="text-xs font-bold text-indigo-500 uppercase tracking-widest">Quiz</p>
+      <button class="text-xs text-gray-400 underline" onclick="renderQuizSetup()">← Changer la sélection</button>
+    </div>
+    <div class="w-full bg-gray-100 rounded-full h-1.5 mb-4">
+      <div class="bg-indigo-500 h-1.5 rounded-full transition-all" style="width:${(state.quizIndex / questions.length) * 100}%"></div>
+    </div>
     <div class="lesson-card mb-4">
-      <p class="text-xs text-gray-400 mb-2">${state.quizIndex + 1} / ${questions.length}</p>
+      <p class="text-xs text-gray-400 mb-1">${q.chapterTitle}</p>
+      <p class="text-xs text-gray-300 mb-2">${state.quizIndex + 1} / ${questions.length}</p>
       <p class="font-semibold text-sm leading-snug">${q.question}</p>
     </div>
     <div id="quiz-options">${optionsHTML}</div>
     <div id="quiz-feedback" class="hidden mt-3 p-3 rounded-xl text-sm font-medium"></div>
     <button id="quiz-next-btn" class="hidden w-full mt-3 py-3 bg-indigo-600 text-white rounded-xl font-semibold text-sm" onclick="nextQuestion()">
-      Suivant →
+      ${state.quizIndex + 1 < questions.length ? 'Question suivante →' : 'Voir les résultats →'}
     </button>
   `;
 }
@@ -247,8 +377,7 @@ function answerQuiz(selected, correct) {
   if (state.quizAnswered) return;
   state.quizAnswered = true;
 
-  const btns = document.querySelectorAll('.quiz-option');
-  btns.forEach((btn, i) => {
+  document.querySelectorAll('.quiz-option').forEach((btn, i) => {
     btn.disabled = true;
     if (i === correct) btn.classList.add('correct');
     if (i === selected && selected !== correct) btn.classList.add('wrong');
@@ -270,14 +399,28 @@ function answerQuiz(selected, correct) {
 function nextQuestion() {
   state.quizIndex++;
   state.quizAnswered = false;
-  renderQuiz();
+  renderQuizQuestion();
 }
 
-function restartQuiz() {
-  state.quizIndex = 0;
-  state.quizScore = 0;
-  state.quizAnswered = false;
-  renderQuiz();
+// ===== QUIZ — Results =====
+function renderQuizResults() {
+  const container = document.getElementById('quiz-content');
+  const total = state.quizQueue.length;
+  const pct   = Math.round((state.quizScore / total) * 100);
+  const color  = pct >= 75 ? 'text-green-500' : pct >= 50 ? 'text-orange-400' : 'text-red-500';
+
+  container.innerHTML = `
+    <div class="lesson-card text-center mt-4 mb-4">
+      <p class="text-5xl font-bold ${color} mb-2">${pct}%</p>
+      <p class="text-sm text-gray-500 mb-1">${state.quizScore} / ${total} correctes</p>
+    </div>
+    <button onclick="startQuiz()" class="w-full py-3 bg-indigo-600 text-white rounded-xl font-semibold text-sm mb-3">
+      Recommencer cette sélection
+    </button>
+    <button onclick="renderQuizSetup()" class="w-full py-3 border-2 border-indigo-200 text-indigo-600 rounded-xl font-semibold text-sm">
+      Changer la sélection
+    </button>
+  `;
 }
 
 // ===== Sommaire Drawer =====
@@ -293,8 +436,7 @@ function buildSommaire() {
       </button>
       <div>
         ${ch.sections.map(s => `
-          <button class="sommaire-section-btn"
-                  onclick="goToChapter(${ci}, '${s.id}')">
+          <button class="sommaire-section-btn" onclick="goToChapter(${ci}, '${s.id}')">
             ${s.title}
           </button>
         `).join('')}
@@ -314,7 +456,7 @@ function closeDrawer() {
   document.getElementById('drawer-overlay').classList.remove('open');
 }
 
-// ===== Swipe gesture (horizontal) =====
+// ===== Swipe gesture =====
 function setupSwipe() {
   let startX = 0, startY = 0;
   const el = document.getElementById('page-container');
@@ -328,8 +470,8 @@ function setupSwipe() {
     const dx = e.changedTouches[0].clientX - startX;
     const dy = e.changedTouches[0].clientY - startY;
     if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 60) {
-      if (dx < 0) goToChapter(state.chapterIndex + 1); // swipe left → next
-      else         goToChapter(state.chapterIndex - 1); // swipe right → prev
+      if (dx < 0) goToChapter(state.chapterIndex + 1);
+      else         goToChapter(state.chapterIndex - 1);
     }
   }, { passive: true });
 }
