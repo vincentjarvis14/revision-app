@@ -178,7 +178,7 @@ function flipCard() {
   }
 }
 
-function markCard(status) {
+function markCard(_status) {
   const scene = document.getElementById('flashcard');
   if (scene) scene.classList.remove('flipped');
   const actions = document.getElementById('card-actions');
