@@ -104,7 +104,7 @@ function renderHome() {
 
   const sectionsHTML = ch.sections.map(s => `
     <div id="section-${s.id}" class="lesson-card">
-      <p class="text-xs font-semibold text-indigo-400 uppercase tracking-widest mb-2">${s.title}</p>
+      <p class="text-xs font-semibold text-teal-500 uppercase tracking-widest mb-2">${s.title}</p>
       <p class="text-sm text-gray-700 leading-relaxed">${s.content}</p>
     </div>
   `).join('');
@@ -113,7 +113,7 @@ function renderHome() {
   const nextDisabled = state.chapterIndex === courses.chapters.length - 1 ? 'disabled' : '';
 
   container.innerHTML = `
-    <p class="text-xs font-bold text-indigo-500 uppercase tracking-widest mb-3">
+    <p class="text-xs font-bold text-teal-600 uppercase tracking-widest mb-3">
       Chapitre ${state.chapterIndex + 1}
     </p>
     ${sectionsHTML}
@@ -139,7 +139,7 @@ function renderFlashcards() {
 
   const card = cards[state.flashcardIndex];
   container.innerHTML = `
-    <p class="text-xs font-bold text-indigo-500 uppercase tracking-widest mb-3">
+    <p class="text-xs font-bold text-teal-600 uppercase tracking-widest mb-3">
       Flashcards — Ch. ${state.chapterIndex + 1}
     </p>
     <p class="text-center text-xs text-gray-400 mb-3">Appuie sur la carte pour voir la réponse</p>
@@ -152,6 +152,10 @@ function renderFlashcards() {
           <p class="text-sm leading-relaxed">${card.answer}</p>
         </div>
       </div>
+    </div>
+    <div id="card-actions" class="card-actions hidden">
+      <button onclick="markCard('unsure')" class="card-btn-unsure">À revoir ↺</button>
+      <button onclick="markCard('knew')" class="card-btn-knew">Je savais ✓</button>
     </div>
     <p class="text-center text-xs text-gray-400 mb-4">${state.flashcardIndex + 1} / ${cards.length}</p>
     <div class="chapter-nav">
@@ -166,7 +170,20 @@ function renderFlashcards() {
 }
 
 function flipCard() {
-  document.getElementById('flashcard').classList.toggle('flipped');
+  const scene = document.getElementById('flashcard');
+  scene.classList.toggle('flipped');
+  const actions = document.getElementById('card-actions');
+  if (actions) {
+    actions.classList.toggle('hidden', !scene.classList.contains('flipped'));
+  }
+}
+
+function markCard(status) {
+  const scene = document.getElementById('flashcard');
+  if (scene) scene.classList.remove('flipped');
+  const actions = document.getElementById('card-actions');
+  if (actions) actions.classList.add('hidden');
+  nextCard();
 }
 function nextCard() {
   const cards = courses.chapters[state.chapterIndex].flashcards;
@@ -192,7 +209,7 @@ function renderQuizSetup() {
   }).join('');
 
   container.innerHTML = `
-    <p class="text-xs font-bold text-indigo-500 uppercase tracking-widest mb-4">Quiz — Sélection</p>
+    <p class="text-xs font-bold text-teal-600 uppercase tracking-widest mb-4">Quiz — Sélection</p>
 
     <!-- Recherche par notion -->
     <div class="quiz-search-wrap mb-4">
@@ -215,7 +232,7 @@ function renderQuizSetup() {
       <p class="text-xs text-gray-400 mb-2">Ou sélectionner un chapitre :</p>
       <div class="quiz-chips-wrap">${chipsHTML}</div>
       ${state.quizSelectedChapters.length > 0
-        ? `<button class="text-xs text-indigo-400 mt-2 underline" onclick="clearChapterSelection()">Tout désélectionner</button>`
+        ? `<button class="text-xs text-teal-500 mt-2 underline" onclick="clearChapterSelection()">Tout désélectionner</button>`
         : ''}
     </div>
 
@@ -321,7 +338,7 @@ function updateQuizPreview() {
     preview.innerHTML = `<p class="text-xs text-orange-400">Aucune question trouvée pour cette sélection.</p>`;
     document.getElementById('quiz-start-btn').disabled = true;
   } else {
-    preview.innerHTML = `<p class="text-xs text-indigo-500 font-medium">${queue.length} question${queue.length > 1 ? 's' : ''} sélectionnée${queue.length > 1 ? 's' : ''}</p>`;
+    preview.innerHTML = `<p class="text-xs text-teal-600 font-medium">${queue.length} question${queue.length > 1 ? 's' : ''} sélectionnée${queue.length > 1 ? 's' : ''}</p>`;
     document.getElementById('quiz-start-btn').disabled = false;
   }
 }
@@ -349,16 +366,19 @@ function renderQuizQuestion() {
 
   const q = questions[state.quizIndex];
   const optionsHTML = q.options.map((opt, i) => `
-    <button class="quiz-option" onclick="answerQuiz(${i}, ${q.answer})">${opt}</button>
+    <button class="quiz-option" onclick="answerQuiz(${i}, ${q.answer})">
+      <span class="quiz-letter">${String.fromCharCode(65 + i)}</span>
+      <span>${opt}</span>
+    </button>
   `).join('');
 
   container.innerHTML = `
     <div class="flex items-center justify-between mb-4">
-      <p class="text-xs font-bold text-indigo-500 uppercase tracking-widest">Quiz</p>
+      <p class="text-xs font-bold text-teal-600 uppercase tracking-widest">Quiz</p>
       <button class="text-xs text-gray-400 underline" onclick="renderQuizSetup()">← Changer la sélection</button>
     </div>
     <div class="w-full bg-gray-100 rounded-full h-1.5 mb-4">
-      <div class="bg-indigo-500 h-1.5 rounded-full transition-all" style="width:${(state.quizIndex / questions.length) * 100}%"></div>
+      <div class="bg-teal-600 h-1.5 rounded-full transition-all" style="width:${(state.quizIndex / questions.length) * 100}%"></div>
     </div>
     <div class="lesson-card mb-4">
       <p class="text-xs text-gray-400 mb-1">${q.chapterTitle}</p>
@@ -367,7 +387,7 @@ function renderQuizQuestion() {
     </div>
     <div id="quiz-options">${optionsHTML}</div>
     <div id="quiz-feedback" class="hidden mt-3 p-3 rounded-xl text-sm font-medium"></div>
-    <button id="quiz-next-btn" class="hidden w-full mt-3 py-3 bg-indigo-600 text-white rounded-xl font-semibold text-sm" onclick="nextQuestion()">
+    <button id="quiz-next-btn" class="hidden w-full mt-3 py-3 bg-teal-600 text-white rounded-xl font-semibold text-sm" onclick="nextQuestion()">
       ${state.quizIndex + 1 < questions.length ? 'Question suivante →' : 'Voir les résultats →'}
     </button>
   `;
@@ -414,10 +434,10 @@ function renderQuizResults() {
       <p class="text-5xl font-bold ${color} mb-2">${pct}%</p>
       <p class="text-sm text-gray-500 mb-1">${state.quizScore} / ${total} correctes</p>
     </div>
-    <button onclick="startQuiz()" class="w-full py-3 bg-indigo-600 text-white rounded-xl font-semibold text-sm mb-3">
+    <button onclick="startQuiz()" class="w-full py-3 bg-teal-600 text-white rounded-xl font-semibold text-sm mb-3">
       Recommencer cette sélection
     </button>
-    <button onclick="renderQuizSetup()" class="w-full py-3 border-2 border-indigo-200 text-indigo-600 rounded-xl font-semibold text-sm">
+    <button onclick="renderQuizSetup()" class="w-full py-3 border-2 border-teal-200 text-teal-700 rounded-xl font-semibold text-sm">
       Changer la sélection
     </button>
   `;
@@ -431,7 +451,7 @@ function buildSommaire() {
     <div class="sommaire-chapter">
       <button class="sommaire-chapter-btn ${ci === state.chapterIndex ? 'current' : ''}"
               onclick="goToChapter(${ci})">
-        <span class="text-indigo-400 font-mono text-xs">${String(ci + 1).padStart(2,'0')}</span>
+        <span class="text-teal-500 font-mono text-xs">${String(ci + 1).padStart(2,'0')}</span>
         ${ch.title}
       </button>
       <div>
