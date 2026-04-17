@@ -1,0 +1,157 @@
+{
+  "title": "Droit Immobilier",
+  "chapters": [
+    {
+      "id": 1,
+      "title": "Les droits réels immobiliers",
+      "sections": [
+        {
+          "id": "1-1",
+          "title": "La propriété",
+          "content": "La propriété est le droit de jouir et disposer des choses de la manière la plus absolue, pourvu qu'on n'en fasse pas un usage prohibé par les lois ou par les règlements (art. 544 C. civ.). Elle confère trois attributs : l'usus (droit d'utiliser), le fructus (droit de percevoir les fruits) et l'abusus (droit de disposer)."
+        },
+        {
+          "id": "1-2",
+          "title": "L'usufruit",
+          "content": "L'usufruit est le droit de jouir des choses dont un autre a la propriété, comme le propriétaire lui-même, mais à la charge d'en conserver la substance (art. 578 C. civ.). Il est temporaire par nature et s'éteint au décès de l'usufruitier."
+        },
+        {
+          "id": "1-3",
+          "title": "Les servitudes",
+          "content": "Une servitude est une charge imposée sur un immeuble (fonds servant) pour l'usage et l'utilité d'un immeuble appartenant à un autre propriétaire (fonds dominant). Les servitudes peuvent être légales, naturelles ou conventionnelles."
+        }
+      ],
+      "flashcards": [
+        { "question": "Quels sont les trois attributs de la propriété ?", "answer": "Usus (utiliser), Fructus (percevoir les fruits), Abusus (disposer)" },
+        { "question": "Définir l'usufruit en une phrase.", "answer": "Droit de jouir d'un bien appartenant à autrui, en conservant sa substance, de manière temporaire." },
+        { "question": "Qu'est-ce qu'un fonds servant ?", "answer": "L'immeuble qui supporte la charge de la servitude au profit du fonds dominant." }
+      ],
+      "quiz": [
+        {
+          "question": "Quel article du Code civil définit la propriété ?",
+          "options": ["Art. 544", "Art. 578", "Art. 637", "Art. 711"],
+          "answer": 0
+        },
+        {
+          "question": "L'usufruit s'éteint automatiquement :",
+          "options": ["Après 30 ans", "Au décès de l'usufruitier", "Au décès du nu-propriétaire", "À la vente du bien"],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "La vente immobilière",
+      "sections": [
+        {
+          "id": "2-1",
+          "title": "La promesse de vente",
+          "content": "La promesse unilatérale de vente est un contrat par lequel le promettant s'engage à vendre un bien à un bénéficiaire qui dispose d'une option d'achat pendant un délai déterminé. Elle diffère du compromis (promesse synallagmatique) qui engage les deux parties."
+        },
+        {
+          "id": "2-2",
+          "title": "Le compromis de vente",
+          "content": "Le compromis de vente (ou promesse synallagmatique) vaut vente dès lors que les deux parties se sont mises d'accord sur la chose et sur le prix. Il est assorti de conditions suspensives, notamment l'obtention d'un prêt immobilier."
+        },
+        {
+          "id": "2-3",
+          "title": "L'acte authentique",
+          "content": "La vente immobilière doit être constatée par acte authentique notarié pour être opposable aux tiers et permettre la publication au fichier immobilier. Le notaire procède aux vérifications d'urbanisme, hypothèques et diagnostics obligatoires."
+        },
+        {
+          "id": "2-4",
+          "title": "Les diagnostics obligatoires",
+          "content": "Avant toute vente, le vendeur doit fournir un Dossier de Diagnostic Technique (DDT) comprenant notamment le DPE, l'amiante, le plomb, les termites, l'installation électrique et gaz, et l'état des risques et pollutions (ERP)."
+        }
+      ],
+      "flashcards": [
+        { "question": "Quelle est la différence entre promesse unilatérale et compromis ?", "answer": "La promesse n'engage que le vendeur ; le compromis engage les deux parties (vaut vente)." },
+        { "question": "Pourquoi l'acte authentique est-il obligatoire ?", "answer": "Pour l'opposabilité aux tiers via la publication au fichier immobilier." },
+        { "question": "Que contient le DDT ?", "answer": "DPE, amiante, plomb, termites, électricité, gaz, ERP (état des risques et pollutions)." }
+      ],
+      "quiz": [
+        {
+          "question": "Le compromis de vente engage :",
+          "options": ["Uniquement le vendeur", "Uniquement l'acheteur", "Les deux parties", "Aucune des parties"],
+          "answer": 2
+        },
+        {
+          "question": "Le DPE signifie :",
+          "options": ["Dossier de Plan d'Ensemble", "Diagnostic de Performance Énergétique", "Document de Propriété Enregistré", "Déclaration Préalable d'Exploitation"],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Le bail d'habitation",
+      "sections": [
+        {
+          "id": "3-1",
+          "title": "La loi du 6 juillet 1989",
+          "content": "La loi du 6 juillet 1989 régit les locations à usage de résidence principale. Elle encadre la durée du bail (3 ans pour un bailleur privé, 6 ans pour un bailleur personne morale), les conditions de congé, et les droits et obligations des parties."
+        },
+        {
+          "id": "3-2",
+          "title": "Le dépôt de garantie",
+          "content": "Pour un logement non meublé, le dépôt de garantie est limité à 1 mois de loyer hors charges. Pour un meublé, il est de 2 mois. Il doit être restitué dans un délai d'un mois si aucun dommage n'est constaté, ou deux mois en cas de retenues justifiées."
+        },
+        {
+          "id": "3-3",
+          "title": "Les charges récupérables",
+          "content": "Les charges récupérables sont les dépenses engagées par le bailleur mais refacturables au locataire selon une liste limitative fixée par décret. Elles couvrent les services liés à l'usage du logement et des parties communes, et les petites réparations."
+        }
+      ],
+      "flashcards": [
+        { "question": "Durée minimale d'un bail vide pour un bailleur personne physique ?", "answer": "3 ans" },
+        { "question": "Quel est le plafond du dépôt de garantie pour un logement vide ?", "answer": "1 mois de loyer hors charges" },
+        { "question": "Dans quel délai restituer le dépôt de garantie sans dommages ?", "answer": "1 mois après remise des clés" }
+      ],
+      "quiz": [
+        {
+          "question": "La durée minimale d'un bail pour une personne morale (bailleur) est de :",
+          "options": ["1 an", "3 ans", "6 ans", "9 ans"],
+          "answer": 2
+        },
+        {
+          "question": "Le dépôt de garantie d'un logement meublé est limité à :",
+          "options": ["1 mois HC", "2 mois HC", "3 mois HC", "Pas de limite"],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "La copropriété",
+      "sections": [
+        {
+          "id": "4-1",
+          "title": "La loi du 10 juillet 1965",
+          "content": "La copropriété est régie par la loi du 10 juillet 1965. Elle s'applique aux immeubles bâtis ou groupes d'immeubles dont la propriété est répartie entre plusieurs personnes par lots comprenant chacun une partie privative et une quote-part des parties communes."
+        },
+        {
+          "id": "4-2",
+          "title": "Le règlement de copropriété",
+          "content": "Le règlement de copropriété est un document contractuel qui définit la destination de l'immeuble, la consistance des parties privatives et communes, les conditions de jouissance, et la répartition des charges. Il s'impose à tous les copropriétaires."
+        },
+        {
+          "id": "4-3",
+          "title": "Le syndicat des copropriétaires",
+          "content": "Le syndicat des copropriétaires regroupe tous les copropriétaires. Il est représenté par le syndic (professionnel ou bénévole) et administré par le conseil syndical. L'assemblée générale est l'organe souverain de décision."
+        }
+      ],
+      "flashcards": [
+        { "question": "Quelle loi régit la copropriété en France ?", "answer": "La loi du 10 juillet 1965" },
+        { "question": "Qu'est-ce qu'un lot de copropriété ?", "answer": "Une partie privative + une quote-part des parties communes (exprimée en tantièmes)" },
+        { "question": "Quel est le rôle du syndic ?", "answer": "Représenter le syndicat des copropriétaires et gérer l'immeuble au quotidien" }
+      ],
+      "quiz": [
+        {
+          "question": "Le règlement de copropriété s'impose :",
+          "options": ["Uniquement aux copropriétaires actuels", "À tous les copropriétaires présents et futurs", "Uniquement au syndic", "Aux locataires uniquement"],
+          "answer": 1
+        }
+      ]
+    }
+  ]
+}
